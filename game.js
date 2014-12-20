@@ -25,9 +25,9 @@ Game.prototype = {
     this.board.append('circle')
       .attr('cx', this.player.x)
       .attr('cy', this.player.y)
-      .attr('r', 15)
+      .attr('r', 20)
       .style('fill', this.player.color)
-      .call(this.player.drag.bind(this.player));
+      .call(d3.behavior.drag().origin(function() { return this; }).on("drag", this.player.dragMove));
   },
   joinData: function() {
     // initial data join between path nodes and enemy objects

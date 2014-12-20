@@ -11,13 +11,24 @@ Game.prototype = {
   startGame: function() {
     // create en Objs
     this.createEnemyObjects();
+    this.createScoreObjects();
     this.createPlayerObjects();
     this.setupData();
 
     this.runGameLoop();
+
+    this.runScoreLoop();
   },
   runGameLoop: function() {
-    setInterval(this.setupData.bind(this), 1500);
+    setInterval(this.setupData.bind(this), 1000);
+  },
+
+  createScoreObjects: function() {
+    this.score = new Score();
+  },
+
+  runScoreLoop: function() {
+    setInterval(this.score.increaseScore.bind(this.score), 250);
   },
 
   createEnemyObjects: function() {
@@ -32,7 +43,7 @@ Game.prototype = {
       .attr('cy', this.player.y)
       .attr('r', 15)
       .style('fill', this.player.color)
-      .call(d3.behavior.drag().origin(function() { return this; }).on("drag", this.player.dragMove));
+      .call(d3.behavior.drag().on("drag", this.player.dragMove));
   },
 
   joinData: function() {

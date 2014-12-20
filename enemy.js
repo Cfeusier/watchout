@@ -1,7 +1,12 @@
-var Enemy = function(id, width, height) {
+var Enemy = function(id, width, height, game) {
   this.id = id;
   this.x = Math.random() * width;
   this.y = Math.random() * height;
+  this.boardSize = {
+    width: width,
+    height: height
+  };
+  this.game = game;
 };
 
 Enemy.prototype = {

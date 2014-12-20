@@ -17,5 +17,14 @@ Score.prototype = {
     this.currentScore++;
     this.updateScore();
     this.updateHighScore();
+  },
+  resetScore: function() {
+    this.currentScore = 0;
+    this.updateScore();
+    this.collisions++;
+    this.updateCollisions();
+  },
+  updateCollisions: function() {
+    d3.select('.scoreboard .collisions').text('Collisions:' + this.collisions.toString());
   }
 };

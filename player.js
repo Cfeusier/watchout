@@ -7,14 +7,9 @@ var Player = function(width, height) {
 
 Player.prototype = {
   constructor: Player,
-  drag: function() {
-    d3.behavior.drag().on('drag', this.dragMove)
-      console.log("drag listener")
-  },
-  dragMove: function(d) {
-    console.log(this);
-    //d3.select(this)
-    //  .attr("cx", d.x = Math.max(15, Math.min(this.width - 15, d3.event.x)))
-    //  .attr("cy", d.y = Math.max(15, Math.min(this.height - 15, d3.event.y)));
+  dragMove: function() {
+    d3.select(this)
+    .attr("cx", this.x = d3.event.sourceEvent.x)
+    .attr("cy", this.y = d3.event.sourceEvent.y);
   }
 };

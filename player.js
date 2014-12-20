@@ -8,8 +8,10 @@ var Player = function(width, height) {
 Player.prototype = {
   constructor: Player,
   drag: function() {
-    d3.behavior.drag().on('drag', this.dragMove)
+    d3.behavior.drag().on('drag', function() {
+
       console.log("drag listener")
+    });
   },
   dragMove: function(d) {
     console.log(this);
